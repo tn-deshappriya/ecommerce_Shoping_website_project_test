@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Header } from '../components/Header';
 import Checkmark from '../assets/images/icons/checkmark.png';
 import { products } from '../../starting-code/data/products';
@@ -5,11 +6,9 @@ import './HomePage.css'
 
 
 export function HomePage(){
-    // send a request using user computer to the server we used buildin promises fetch and response.json
-    fetch('http://localhost:3000/api/products').then((Response)=>{
-        return Response.json();
-    }).then((data)=>{
-        console.log(data);
+    // we used axios to fetch data then we can assign data to response then we can get it like this.
+    axios.get('http://localhost:3000/api/products').then((Response)=>{
+        console.log(Response.data);
     })
     return(
         <>
