@@ -15,12 +15,12 @@ export function HomePage(){
     // useEffect is used to stop request send more to in refresh after page it control it and any changes in that then it request.
     useEffect(()=>{
             // we used axios to fetch data then we can assign data to response then we can get it like this.
-        axios.get('http://localhost:3000/api/products')
+        axios.get('/api/products')
             .then((Response)=>{
                 setProducts(Response.data);
             });
         
-        axios.get('http://localhost:3000/api/cart-items')
+        axios.get('/api/cart-items')
             .then((response)=>{
                 setCart(response.data);
             })
