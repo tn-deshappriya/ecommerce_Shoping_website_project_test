@@ -6,11 +6,11 @@ import Checkmark from '../assets/images/icons/checkmark.png';
 import './HomePage.css'
 
 
-export function HomePage(){
+export function HomePage({cart}){
 
     // setup useState to store that fetching data as a products and setProducts use to set that data to store in products..
     const [products,setProducts] = useState([]);
-    const [cart,setCart] = useState([]);
+    
 
     // useEffect is used to stop request send more to in refresh after page it control it and any changes in that then it request.
     useEffect(()=>{
@@ -19,11 +19,6 @@ export function HomePage(){
             .then((Response)=>{
                 setProducts(Response.data);
             });
-        
-        axios.get('/api/cart-items')
-            .then((response)=>{
-                setCart(response.data);
-            })
     },[])
     // that [] empty array can find that changes is that array is empty request send one and not request again if any change in that backend then catch it this empty array then re-send request.
     return(
