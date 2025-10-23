@@ -1,19 +1,22 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { Header } from '../components/Header';
 import Checkmark from '../assets/images/icons/checkmark.png';
-import { products } from '../../starting-code/data/products';
+
 import './HomePage.css'
 
 
 export function HomePage(){
+
+    // setup useState to store that fetching data as a products and setProducts use to set that data to store in products..
+    const [products,setProducts] = useState([]);
 
     // useEffect is used to stop request send more to in refresh after page it control it and any changes in that then it request.
     useEffect(()=>{
             // we used axios to fetch data then we can assign data to response then we can get it like this.
         axios.get('http://localhost:3000/api/products')
             .then((Response)=>{
-                console.log(Response.data);
+                setProducts(Response.data);
             })
     },[])
     // that [] empty array can find that changes is that array is empty request send one and not request again if any change in that backend then catch it this empty array then re-send request.
