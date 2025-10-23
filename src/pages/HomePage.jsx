@@ -10,6 +10,7 @@ export function HomePage(){
 
     // setup useState to store that fetching data as a products and setProducts use to set that data to store in products..
     const [products,setProducts] = useState([]);
+    const [cart,setCart] = useState([]);
 
     // useEffect is used to stop request send more to in refresh after page it control it and any changes in that then it request.
     useEffect(()=>{
@@ -17,6 +18,11 @@ export function HomePage(){
         axios.get('http://localhost:3000/api/products')
             .then((Response)=>{
                 setProducts(Response.data);
+            });
+        
+        axios.get('http://localhost:3000/api/cart-items')
+            .then((response)=>{
+                setCart(response.data);
             })
     },[])
     // that [] empty array can find that changes is that array is empty request send one and not request again if any change in that backend then catch it this empty array then re-send request.
@@ -24,7 +30,7 @@ export function HomePage(){
         <>
             <title>Ecommerce Project</title>
             <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
-            <Header />
+            <Header cart={cart} />
             <div className="home-page">
                 <div className="products-grid">
 
