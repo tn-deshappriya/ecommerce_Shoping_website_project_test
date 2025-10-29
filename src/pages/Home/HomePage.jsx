@@ -6,7 +6,7 @@ import { ProductGrid } from './ProductsGrid';
 import './HomePage.css'
 
 
-export function HomePage({ cart }) {
+export function HomePage({ cart, loadCart }) {
 
     // setup useState to store that fetching data as a products and setProducts use to set that data to store in products..
     const [products, setProducts] = useState([]);
@@ -27,7 +27,7 @@ export function HomePage({ cart }) {
             <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
             <Header cart={cart} />
             <div className="home-page">
-                <ProductGrid products={products} />
+                <ProductGrid products={products} loadCart={loadCart} />
             </div>
         </>
     );
